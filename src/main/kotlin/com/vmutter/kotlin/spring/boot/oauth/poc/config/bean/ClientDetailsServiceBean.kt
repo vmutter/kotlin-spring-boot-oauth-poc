@@ -12,7 +12,7 @@ class ClientDetailsServiceBean : ClientDetailsService {
     @Autowired
     private lateinit var clientService: ClientService
 
-    override fun loadClientByClientId(clientId: String?): ClientDetails {
+    override fun loadClientByClientId(clientId: String): ClientDetails {
         return clientService.findClient(clientId)
     }
 

@@ -15,10 +15,16 @@ class Client : Serializable {
 
     lateinit var password: String
 
+    lateinit var scope: String
+
+    lateinit var authorizedGrantTypes: String
+
     fun toBaseClientDetails(): BaseClientDetails {
         val clientDetails = BaseClientDetails()
         clientDetails.clientId = this.login
         clientDetails.clientSecret = this.password
+        clientDetails.setScope(mutableListOf(this.scope))
+        clientDetails.setAuthorizedGrantTypes(authorizedGrantTypes.split(","))
         return clientDetails
     }
 }

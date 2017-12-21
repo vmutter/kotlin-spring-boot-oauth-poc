@@ -12,7 +12,7 @@ class UserDetailsServiceBean : UserDetailsService {
     @Autowired
     private lateinit var userService: UserService
 
-    override fun loadUserByUsername(username: String?): UserDetails {
+    override fun loadUserByUsername(username: String): UserDetails {
         return userService.findUser(username)
     }
 

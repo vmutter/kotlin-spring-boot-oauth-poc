@@ -12,9 +12,9 @@ class ClientService {
     @Autowired
     private lateinit var clientRepository: ClientRepository
 
-    fun findClient(clientId: String?): ClientDetails {
+    fun findClient(clientId: String): ClientDetails {
         return clientRepository.findById(clientId).map { c -> c.toBaseClientDetails() }
-                .orElse(throw NoSuchClientException("Invalid clientId: ${clientId}"))
+                .orElseThrow { throw NoSuchClientException("Invalid clientId: $clientId") }
     }
 
 }

@@ -56,7 +56,7 @@ class OAuth2Config : AuthorizationServerConfigurerAdapter() {
 
     @Bean
     protected fun jwtAccessTokenConverter(): JwtAccessTokenConverter {
-        val keyStoreKeyFactory = KeyStoreKeyFactory(ClassPathResource(securityProperties.keyResource),
+        val keyStoreKeyFactory = KeyStoreKeyFactory(ClassPathResource(securityProperties.keyResource!!),
                 securityProperties.keyPass?.toCharArray())
 
         val converter = JwtAccessTokenConverter()
